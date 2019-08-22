@@ -22,7 +22,7 @@ set titlestring=%F\ -\ vim
 set guicursor=
 set noshowmode
 set laststatus=2
-
+set colorcolumn=80
 set background=dark
 
 " File behaviour "
@@ -51,11 +51,18 @@ set splitright
 
 let g:fakeclip_no_default_key_mappings = 1
 let modifier = '<bang>0' ? '' : '<unique>'
+execute 'silent! nmap '.modifier.' d <Plug>(fakeclip-screen-d)'
+execute 'silent! vmap '.modifier.' d <Plug>(fakeclip-screen-d)'
+execute 'silent! nmap '.modifier.' dd <Plug>(fakeclip-screen-dd)'
+execute 'silent! vmap '.modifier.' dd <Plug>(fakeclip-screen-dd)'
+execute 'silent! nmap '.modifier.' D <Plug>(fakeclip-screen-D)'
+execute 'silent! vmap '.modifier.' D <Plug>(fakeclip-screen-D)'
 execute 'silent! nmap '.modifier.' y <Plug>(fakeclip-screen-y)'
 execute 'silent! nmap '.modifier.' Y <Plug>(fakeclip-screen-Y)'
-execute 'silent! nmap '.modifier.' yy <Plug>(fakeclip-screen-Y)'
+execute 'silent! nmap '.modifier.' yy <Plug>(fakeclip-screen-yy)'
 execute 'silent! vmap '.modifier.' y <Plug>(fakeclip-screen-y)'
 execute 'silent! vmap '.modifier.' Y <Plug>(fakeclip-screen-Y)'
+execute 'silent! vmap '.modifier.' yy <Plug>(fakeclip-screen-yy)'
 execute 'silent! nmap '.modifier.' p <Plug>(fakeclip-screen-p)'
 execute 'silent! nmap '.modifier.' P <Plug>(fakeclip-screen-P)'
 execute 'silent! nmap '.modifier.' gp <Plug>(fakeclip-screen-gp)'
@@ -111,6 +118,9 @@ so ~/.vim/plugins.vim
 "let g:gruvbox_vert_split = 'bg1'
 "let g:gruvbox_sign_column = 'bg0'
 "colorscheme gruvbox
+
+syntax enable
+set t_Co=256
 
 colorscheme badwolf
 hi Normal ctermbg=NONE
