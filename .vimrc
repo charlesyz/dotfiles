@@ -38,6 +38,7 @@ set tabstop=4
 
 " Search "
 
+set ignorecase
 set smartcase
 set hlsearch
 set incsearch
