@@ -7,7 +7,7 @@ set mouse=a
 set ttymouse=sgr
 
 set so=5
-" set clipboard+=unnamedplus
+set clipboard=unnamed
 set wildmenu
 set timeoutlen=1000 ttimeoutlen=0
 " Appearance "
@@ -15,7 +15,7 @@ set timeoutlen=1000 ttimeoutlen=0
 syntax enable
 
 set number
-set linespace=12
+set linespace=1
 
 set title
 set titlestring=%F\ -\ vim
@@ -48,8 +48,7 @@ set incsearch
 set splitbelow
 set splitright
 
-" Tmux Buffer "
-
+" Tmux Buffer - Only for Windows SSH with Putty "
 let g:fakeclip_no_default_key_mappings = 1
 let modifier = '<bang>0' ? '' : '<unique>'
 execute 'silent! nmap '.modifier.' d <Plug>(fakeclip-screen-d)'
