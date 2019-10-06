@@ -15,7 +15,7 @@ set timeoutlen=1000 ttimeoutlen=0
 syntax enable
 
 set number
-set linespace=1
+set linespace=2
 
 set title
 set titlestring=%F\ -\ vim
@@ -47,6 +47,17 @@ set incsearch
 
 set splitbelow
 set splitright
+
+" vim_markdown "
+let g:vim_markdown_folding_disabled = 2
+set conceallevel=2
+let g:vim_markdown_math = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_conceal_code_blocks = 0
+" let g:tex_conceal = ""
+let g:vim_markdown_emphasis_multiline = 0
+" Gvim "
+set guioptions=
 
 " Tmux Buffer - Only for Windows SSH with Putty "
 let g:fakeclip_no_default_key_mappings = 1
@@ -115,14 +126,25 @@ endif
 
 so ~/.vim/plugins.vim
 
-"let g:gruvbox_vert_split = 'bg1'
-"let g:gruvbox_sign_column = 'bg0'
-"colorscheme gruvbox
+if &term =~# '^screen'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 syntax enable
-set t_Co=256
+" set t_Co=256
 
-colorscheme badwolf
+" Colourscheme "
+set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="mirage"   " for dark version of theme
+colorscheme ayu
+" let g:gruvbox_vert_split = 'bg1'
+" let g:gruvbox_sign_column = 'bg0'
+" colorscheme gruvbox
+" colorscheme badwolf
+
 hi Normal ctermbg=NONE
 hi CursorLineNr ctermfg=white
 hi SignColumn ctermbg=NONE
@@ -135,15 +157,7 @@ hi GitGutterChange ctermfg=yellow ctermbg=NONE
 hi GitGutterDelete ctermfg=darkred ctermbg=NONE
 hi GitGutterChangeDelete ctermfg=yellow ctermbg=NONE
 
-let g:lightline = {
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['gitbranch', 'fileformat', 'fileencoding']]
-  \     },
-  \     'component_function': {
-  \         'gitbranch': 'gitbranch#name'
-  \     }
-  \ }
+let g:lightline = {'colorscheme': 'ayu'}
 
 let g:deoplete#enable_at_startup = 1
 let g:javascript_plugin_flow = 1
